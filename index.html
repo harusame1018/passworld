@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>table</title>
+		<style>
+			table {
+				border:1px solid black;
+			}
+			td {
+				border:1px solid black;
+				width:20px;
+				height:40px;
+			}
+		</style>
+		<script>
+			"use strict"
+			//使わなかったりするコードはコメントアウトしています
+			let click = ["h","a","r","u","s","a","m","e","1","0","1","8"]; //正解のデータ
+			//let click = ["a","b","c","d","e"];
+			let savedata = []; //クリックされたときに何をクリックしたかが保存される場所
+			//let count = 0; 
+			let abc = [
+				["a","b","c","d","e","f","g","h","i"],
+				["j","k","l","m","n","o","p","q","r"],
+				["s","t","u","v","w","x","y","z","1"],
+	    		["2","3","4","5","6","7","8","9","0"]
+			]; //どこにどの文字が来るかのデータ
+			function init() { //初期化
+				let table = document.createElement("table"); //テーブル要素の作成
+				document.body.appendChild(table); //ページにテーブル要素を追加
+				for(let i = 0; i < 4; i++){ //4回繰り返す
+					let tr = document.createElement("tr"); //tr要素を作成
+					//tr.textContent = abc[i];
+					table.appendChild(tr); //tr要素をテーブル要素に追加
+					for(let j = 0; j < 9; j++) { //9回繰り返す
+						let td = document.createElement("td"); //td要素を作成
+						td.innerText = abc[i][j]; //td要素に文字を追加
+						td.id = "td_data" + i + j; //td要素のIDを設定
+						//let button = document.createElement("button");
+						//button.id = "td_data" + i + j;
+						//button.onclick = savedate;
+						td.onclick = savedate; //クリック時の動作を設定
+						//if(j % 3 == 0) {
+							//let br = document.createElement("br");
+							//tr.appendChild(br);
+						//}
+						tr.appendChild(td); //tr要素にtd要素を追加
+						//button.appendChild(td);
+						//count++;
+					}
+			   }
+				
+			};
+		   window.onload = function() {
+				
+			}
+			function saves(e) {
+				
+				//let text = document.getElementById("id");
+				
+			};
+			function savedate(e) { 
+				let id = e.target.id; //クリックされた要素のIDを取得
+				//let text = id.textContent;
+				let cell = document.getElementById(id); //クリックされた要素の内容を取得
+				let text = cell.innerText; //クリックされた要素のテキストを取得
+				savedata.push(text); //配列savedataにテキストを追加
+				console.log(savedata); //デバッグ用
+				//if(savedata.length == click.length && arraysMatch(savedata,click)) {
+				if(arraysMatch(savedata,click)) { //正解と見比べる
+					window.location.href = "a/kakusi.html"; //新しいページに移動
+				}
+			};
+			function arraysMatch(arr1,arr2) { //正解と合っているかの判断をする関数 chatGPT作
+				if(arr1.length !== arr2.length) {
+					return false;
+				}
+				for(let i = 0; i < arr1.length; i++) {
+					if(arr1[i] !== arr2[i]) {
+						return false;
+					}
+				}
+				return true;
+			}
+		</script>
+	</head>
+	<body onload="init()">
+		<!--
+		<table>
+			<tr>
+				<td>a</td>
+				<td>b</td>
+				<td>c</td>
+			</tr>
+			<tr>
+				<td>d</td>
+				<td>f</td>
+				<td>e</td>
+			</tr>
+			<tr>
+				<td>f</td>
+				<td>g</td>
+				<td>h</td>
+			</tr>
+		</table>
+		-->
+		<script>
+			
+		</script>
+	</body>
+</html>
